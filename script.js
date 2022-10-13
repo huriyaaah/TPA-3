@@ -27,6 +27,11 @@ function showMovies(data){
         movieCard.innerHTML = `
         <img src="${IMG_URL + poster_path}" alt="${title}">
 
+        <div class="movie-info">
+            <h3>${title}</h3>
+            <span>${vote_average}</span>
+        </div> 
+
         <div class="overview">
             <h3>Overview</h3>
             ${overview}
@@ -35,6 +40,16 @@ function showMovies(data){
 
         main.appendChild(movieCard)
     })
+}
+
+function getColor(vote_average) {
+    if(vote_average >= 8){
+        return "green"
+    } else if (vote_average >= 5){
+        return "orange"
+    } else {
+        return "red"
+    }
 }
 
 form.addEventListener('change', (e) => {
@@ -47,3 +62,4 @@ form.addEventListener('change', (e) => {
         getMovies(API_URL)
     }
 })
+
